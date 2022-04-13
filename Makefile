@@ -1,7 +1,7 @@
 NAME = push_swap
 
 FILES = \
-	pushswap utils
+	pushswap utils stack stack2
 
 OFILES = $(FILES:%=%.o)
 CFLAGS = -Wall -Wextra
