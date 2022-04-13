@@ -1,0 +1,8 @@
+push_swap
+*.o
+main.c
+*.a
+*test*
+*.sh
+*.out
+/scripts/
