@@ -9,6 +9,19 @@ void	error_exit(void)
 	exit(1);
 }
 
+int	ilog2(int n)
+{
+	int	r;
+
+	r = 0;
+	while (n > 1)
+	{
+		n = n >> 1;
+		++r;
+	}
+	return (r);
+}
+
 void	stk_print(t_stack *top, char *head)
 {
 	t_stack	*n;
