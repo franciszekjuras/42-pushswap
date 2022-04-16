@@ -20,7 +20,7 @@ t_ilist	*ilst_add(t_ilist *front, int v)
 	return (n);
 }
 
-t_ilist *ilst_clear(t_ilist *front)
+t_ilist	*ilst_clear(t_ilist *front)
 {
 	t_ilist	*next;
 

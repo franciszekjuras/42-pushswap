@@ -4,15 +4,10 @@
 # include "stack.h"
 # include "ilist.h"
 
-typedef struct s_pile
-{
-	t_stack	*t;
-	t_ilist *i;
-	char	idx;
-}	t_pile;
-
 void	error_exit(void);
-void	stk_print(t_stack *top, char *head);
+t_stack	*stk_parse(char **argv, int n);
 int		ilog2(int n);
+int		stk_check_rep_sorted(t_stack *top);
+void	instr_print(char *instr);
 
 #endif

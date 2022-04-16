@@ -1,7 +1,8 @@
 NAME = push_swap
 
 FILES = \
-	pushswap utils stack stack2 ilist psops psops2
+	pushswap utils stack stack2 ilist psops psops2 \
+	sort sort_merge
 
 OFILES = $(FILES:%=%.o)
 CFLAGS = -Wall -Wextra

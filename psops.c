@@ -1,6 +1,6 @@
 #include "stack.h"
-#include "utils.h"
 #include "ilist.h"
+#include "sort.h"
 #include "psops.h"
 
 char	*ps_push(t_pile *a, t_pile *b, char *instr)
