@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fjuras <fjuras@student.42wolfsburg.de>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/07 22:22:18 by fjuras            #+#    #+#             */
+/*   Updated: 2022/05/07 22:23:23 by fjuras           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "stack.h"
 
@@ -17,7 +29,7 @@ t_stack	*stk_clear(t_stack *top)
 	if (top == 0)
 		return (0);
 	n = top;
-	while(n->next != top)
+	while (n->next != top)
 	{
 		n = n->next;
 		free(n->prev);

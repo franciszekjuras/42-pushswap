@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_merge.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fjuras <fjuras@student.42wolfsburg.de>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/07 22:22:02 by fjuras            #+#    #+#             */
+/*   Updated: 2022/05/07 22:23:16 by fjuras           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ilist.h"
 #include "stack.h"
 #include "psops.h"
@@ -53,7 +65,7 @@ char	*stk_sort_push_to_from(t_pile *b, t_pile *a, char *instr)
 	b->i = ilst_add(b->i, a->i->v);
 	a->i = ilst_pop(a->i);
 	i = 0;
-	while(i < b->i->v)
+	while (i < b->i->v)
 	{
 		instr = ps_push(b, a, instr);
 		++i;

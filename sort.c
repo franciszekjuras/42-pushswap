@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fjuras <fjuras@student.42wolfsburg.de>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/07 22:22:09 by fjuras            #+#    #+#             */
+/*   Updated: 2022/05/07 22:23:07 by fjuras           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ilist.h"
 #include "stack.h"
 #include "psops.h"
@@ -17,7 +29,7 @@ static char	*stk_sort_triple(t_pile *a, char *instr)
 	return (instr);
 }
 
-int stk_check_asort(t_pile *a)
+int	stk_check_asort(t_pile *a)
 {
 	int		atop;
 	int		abase;
@@ -26,7 +38,7 @@ int stk_check_asort(t_pile *a)
 	pos = a->t;
 	atop = 1;
 	abase = a->i->v - 1;
-	while(abase > 0 && pos->v <= pos->next->v)
+	while (abase > 0 && pos->v <= pos->next->v)
 	{
 		pos = pos->next;
 		++atop;
