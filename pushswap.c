@@ -14,5 +14,7 @@ int	main(int argc, char **argv)
 	top = stk_sort(top, argc - 1, instr + 1);
 	if (stk_check_rep_sorted(top))
 		error_exit();
+	top = stk_clear(top);
 	instr_print(instr);
+	free(instr);
 }

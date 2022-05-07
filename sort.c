@@ -2,6 +2,7 @@
 #include "stack.h"
 #include "psops.h"
 #include "sort.h"
+#include "utils.h"
 
 static char	*stk_sort_triple(t_pile *a, char *instr)
 {
@@ -16,8 +17,34 @@ static char	*stk_sort_triple(t_pile *a, char *instr)
 	return (instr);
 }
 
+int stk_check_asort(t_pile *a)
+{
+	int		atop;
+	int		abase;
+	t_stack	*pos;
+
+	pos = a->t;
+	atop = 1;
+	abase = a->i->v - 1;
+	while(abase > 0 && pos->v <= pos->next->v)
+	{
+		pos = pos->next;
+		++atop;
+		--abase;
+	}
+	if (atop >= 4)
+	{
+		a->i->v = abase;
+		a->i = ilst_add(a->i, atop);
+		return (1);
+	}
+	return (0);
+}
+
 static char	*stk_sort_new_block4(t_pile *a, t_pile *b, char *instr)
 {
+	if (stk_check_asort(a))
+		return (instr);
 	instr = ps_push(b, a, instr);
 	instr = ps_push(b, a, instr);
 	a->i = ilst_add(a->i, 2);
@@ -36,7 +63,7 @@ static char	*stk_sort_new_block(t_pile *a, t_pile *b, char *instr)
 {
 	if (a->i->v >= 4)
 		return (stk_sort_new_block4(a, b, instr));
-	if (a->i->v == 3)
+	else if (a->i->v == 3)
 		instr = stk_sort_triple(a, instr);
 	else if (a->i->v == 2 && a->t->v > a->t->next->v)
 		instr = ps_swap(a, instr);
@@ -64,5 +91,7 @@ t_stack	*stk_sort(t_stack *top, int n, char *instr)
 			instr = stk_sort_merge(&a, &b, instr);
 	}
 	*instr = 0;
+	ilst_clear(a.i);
+	ilst_clear(b.i);
 	return (a.t);
 }	

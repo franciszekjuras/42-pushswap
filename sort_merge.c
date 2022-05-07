@@ -46,10 +46,27 @@ char	*stk_sort_merge_to_from(t_pile *a, t_pile *b, int s, char *instr)
 	return (instr);
 }
 
+char	*stk_sort_push_to_from(t_pile *b, t_pile *a, char *instr)
+{
+	int	i;
+
+	b->i = ilst_add(b->i, a->i->v);
+	a->i = ilst_pop(a->i);
+	i = 0;
+	while(i < b->i->v)
+	{
+		instr = ps_push(b, a, instr);
+		++i;
+	}
+	return (instr);
+}
+
 char	*stk_sort_merge(t_pile *a, t_pile *b, char *instr)
 {
 	if (a->i->next == 0 || a->i->next->v == 0)
 		return (stk_sort_merge_to_from(a, b, 1, instr));
+	else if (b->i == 0)
+		return (stk_sort_push_to_from(b, a, instr));
 	else if (b->i->next == 0)
 		return (stk_sort_merge_to_from(b, a, -1, instr));
 	else if (a->i->v + b->i->v >= b->i->next->v)

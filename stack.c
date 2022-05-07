@@ -10,6 +10,22 @@ t_stack	*stk_new(int v)
 	return (n);
 }
 
+t_stack	*stk_clear(t_stack *top)
+{
+	t_stack	*n;
+
+	if (top == 0)
+		return (0);
+	n = top;
+	while(n->next != top)
+	{
+		n = n->next;
+		free(n->prev);
+	}
+	free(n);
+	return (0);
+}
+
 t_stack	*stk_push(t_stack *top, t_stack *n)
 {
 	if (top == 0)
