@@ -6,7 +6,7 @@
 /*   By: fjuras <fjuras@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 22:22:02 by fjuras            #+#    #+#             */
-/*   Updated: 2022/05/07 22:23:16 by fjuras           ###   ########.fr       */
+/*   Updated: 2022/05/10 21:00:05 by fjuras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*stk_sort_merge(t_pile *a, t_pile *b, char *instr)
 		return (stk_sort_push_to_from(b, a, instr));
 	else if (b->i->next == 0)
 		return (stk_sort_merge_to_from(b, a, -1, instr));
-	else if (a->i->v + b->i->v >= b->i->next->v)
+	else if ((a->i->v + b->i->v) * 11 / 10 >= b->i->next->v)
 		return (stk_sort_merge_to_from(a, b, 1, instr));
 	else
 		return (stk_sort_merge_to_from(b, a, -1, instr));

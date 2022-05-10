@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_get_next_line_utils.h                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fjuras <fjuras@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 21:14:07 by fjuras            #+#    #+#             */
-/*   Updated: 2022/04/20 12:06:39 by fjuras           ###   ########.fr       */
+/*   Created: 2022/03/01 15:03:48 by fjuras            #+#    #+#             */
+/*   Updated: 2022/05/01 23:17:27 by fjuras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_GET_NEXT_LINE_UTILS_H
+# define FT_GET_NEXT_LINE_UTILS_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
+# include <stddef.h>
 
-void	ft_swapi(int *a, int *b)
+typedef struct s_list	t_list;
+
+struct s_list
 {
-	int	c;
+	int		id;
+	char	*str;
+	size_t	size;
+	t_list	*next;
+};
 
-	c = *a;
-	*a = *b;
-	*b = c;
-}
+size_t	ft_strlen_null(const char *s);
+char	*ft_strnsplit(char *str, size_t n);
+int		node_appbuf(t_list *node, const char *buf);
 
-void	ft_swapp(void **p1, void **p2)
-{
-	void	*c;
-
-	c = *p1;
-	*p1 = *p2;
-	*p2 = c;
-}
+#endif
