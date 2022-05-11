@@ -6,7 +6,7 @@
 /*   By: fjuras <fjuras@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 22:22:02 by fjuras            #+#    #+#             */
-/*   Updated: 2022/05/11 16:12:51 by fjuras           ###   ########.fr       */
+/*   Updated: 2022/05/11 19:35:31 by fjuras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,21 @@ int	stk_sort_rewind(t_pile *a, int btop, int s, char **instr)
 	{
 		return (0);
 	}
-	while (ia > 0 && s * a->t->v < s * btop)
+	if (s > 0)
 	{
-		*instr = ps_rot(a, *instr);
-		--ia;
+		while (ia > 0 && a->t->v < btop)
+		{
+			*instr = ps_rot(a, *instr);
+			--ia;
+		}
+	}
+	else
+	{
+		while (ia > 0 && a->t->v > btop)
+		{
+			*instr = ps_rot(a, *instr);
+			--ia;
+		}
 	}
 	return (ia);
 }
@@ -43,7 +54,9 @@ char	*stk_sort_merge_to_from(t_pile *a, t_pile *b, int s, char *instr)
 	{
 		if (ib == 0)
 			instr = ps_rrot(a, instr);
-		else if (ia == a->i->v || s * a->t->prev->v < s * b->t->v)
+		else if (ia == a->i->v
+			|| (s > 0 && a->t->prev->v < b->t->v)
+			|| (s < 0 && a->t->prev->v > b->t->v))
 		{
 			instr = ps_push(a, b, instr);
 			--ib;
@@ -83,7 +96,7 @@ char	*stk_sort_merge(t_pile *a, t_pile *b, char *instr)
 		return (stk_sort_merge_to_from(b, a, -1, instr));
 	else if ((a->i->v + b->i->v) >= b->i->next->v)
 		return (stk_sort_merge_to_from(a, b, 1, instr));
-	else if (a->i->v < b->i->v )
+	else if (a->i->v < b->i->v)
 		return (stk_sort_push_to_from(b, a, instr));
 	else
 		return (stk_sort_merge_to_from(b, a, -1, instr));

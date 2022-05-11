@@ -6,7 +6,7 @@
 /*   By: fjuras <fjuras@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 22:22:31 by fjuras            #+#    #+#             */
-/*   Updated: 2022/05/07 22:26:57 by fjuras           ###   ########.fr       */
+/*   Updated: 2022/05/11 20:01:37 by fjuras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ t_stack	*stk_parse(char **argv, int n)
 		top = stk_pushbck(top,
 				stk_new(ft_strtonum(&np, INT_MIN, INT_MAX, &err)));
 		if (err || *np != '\0')
+		{
+			top = stk_clear(top);
 			error_exit();
+		}
 		++i;
 	}
 	return (top);

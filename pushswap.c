@@ -6,7 +6,7 @@
 /*   By: fjuras <fjuras@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 22:21:54 by fjuras            #+#    #+#             */
-/*   Updated: 2022/05/07 22:21:55 by fjuras           ###   ########.fr       */
+/*   Updated: 2022/05/11 19:39:53 by fjuras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ int	main(int argc, char **argv)
 	*instr = 'x';
 	top = stk_sort(top, argc - 1, instr + 1);
 	if (stk_check_rep_sorted(top))
+	{
+		top = stk_clear(top);
+		free(instr);
 		error_exit();
+	}
 	top = stk_clear(top);
 	instr_print(instr);
 	free(instr);
